@@ -9,7 +9,8 @@ import static org.junit.jupiter.api.Assertions.*;
 @DisplayName("For LinkedLists")
 public class LinkedListTests {
 
-    LinkedList<Integer> testLL = new LinkedList<Integer>(new NodeLinkedList<Integer>(6));
+    LinkedList<Integer> testLL = new LinkedList<>(new NodeLinkedList<>(6));
+    LinkedList<String> testLLString = new LinkedList<>(new NodeLinkedList<>("NINE"));
 
     @Test
     @DisplayName("simple LinkedList, head value and null backvalue")
