@@ -30,3 +30,4 @@ build
 
 # intelliJ profiles
 .idea/uiDesigner.xml
+.idea/codeStyles
