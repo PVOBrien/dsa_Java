@@ -4,7 +4,7 @@ package dsa_Java.LinkedList;
  * @param <T> can only (or will only) be a NodeLinkedList<T>
  */
 public class LinkedList<T> {
-    public NodeLinkedList<T> head;
+    private NodeLinkedList<T> head;
     private NodeLinkedList<T> tail;
 
     /**
@@ -17,13 +17,18 @@ public class LinkedList<T> {
 
     /**
      * Overloaded constructor method.
-     * <br> Creates a basic head-and-tail linkedlist from the provided NodeLinkedList node.
+     * <br> Creates a basic head-and-tail LinkedList from the provided {@link dsa_Java.LinkedList.NodeLinkedList NodeLinkedList}.
      */
     public LinkedList(NodeLinkedList<T> newNode) {
         this.head = newNode;
         this.tail = newNode;
     }
 
+    /**
+     * Adds the value to the end of the LinkedList.
+     *
+     * @param value takes a T value and puts it into a {@link dsa_Java.LinkedList.NodeLinkedList NodeLinkedList}.
+     */
     public void append(T value) {
         NodeLinkedList<T> nodeLinkedList = new NodeLinkedList<>(value);
         if (head == null) {
@@ -34,7 +39,22 @@ public class LinkedList<T> {
             setTail(nodeLinkedList);
         }
     }
-    // TODO: dequeue
+
+    public void append(NodeLinkedList<T> nodeLinkedList) {
+        if (head == null) {
+            setHead(nodeLinkedList);
+            setTail(nodeLinkedList);
+        } else {
+            getTail().setNodeBack(nodeLinkedList);
+            setTail(nodeLinkedList);
+        }
+    }
+
+    public NodeLinkedList<T> dequeue() {
+        NodeLinkedList<T> toDeQ = getHead();
+        setHead(getHead().getNodeBack());
+        return toDeQ;
+    }
 
     public void setHead(NodeLinkedList<T> head) {
         this.head = head;
